@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 const app = express()
+
 app.listen(8001, () => {
     console.log('service running at PORT: 8001')
 })
@@ -9,10 +10,14 @@ const storage = multer.diskStorage({ // ในส่วนนี้จะเป�
         cb(null, 'uploads/')
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + ".png")
+        cb(null, Date.now() + '.png')
     }
 })
 const upload = multer({ storage: storage }) // ใส่ Config ลงไป
+
+var publicDir = require('path').join(__dirname, './uploads')
+app.use(express.static(publicDir))
+
 app.get('/', (req, res) => {
     res.send('Hello Upload')
 })
