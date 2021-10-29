@@ -10,7 +10,7 @@ const storage = multer.diskStorage({ // ในส่วนนี้จะเป�
         cb(null, 'uploads/')
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + '.png')
+        cb(null, Date.now() + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1])
     }
 })
 const upload = multer({ storage: storage }) // ใส่ Config ลงไป
