@@ -2,7 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const app = express()
 
-app.listen(8001, () => {
+app.listen(8002, () => {
     console.log('service running at PORT: 8001')
 })
 const storage = multer.diskStorage({ // ในส่วนนี้จะเป็น config ของ Multer ว่าจะให้เก็บไฟล์ไว้ที่ไหน และ Rename ชื่อไฟล์
